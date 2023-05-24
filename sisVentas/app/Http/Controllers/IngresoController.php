@@ -47,7 +47,7 @@ class IngresoController extends Controller
                     ->get();
         return view("compras.ingreso.create",["personas"=>$personas, "articulos"=>$articulos]);
     }
-
+    //creo que el error se encuentra en este objeto
     public function store(IngresoFormRequest $request)
     {
         try
@@ -58,8 +58,8 @@ class IngresoController extends Controller
          $ingreso->tipo_comprobante = $request->get('tipo_comprobante');
          $ingreso->serie_comprobante = $request->get('serie_comprobante');
          $ingreso->num_comprobante = $request->get('num_comprobante');
-         //$mytime = Carbon::now('America/Lima'); 
-         //$ingreso->fecha_hora = $mytime->toDateTimeString();
+         $mytime = Carbon::now('America/Lima'); 
+         $ingreso->fecha_hora = $mytime->toDateTimeString();
          $ingreso->impuesto='18';
          $ingreso->estado='A';
          $ingreso->save();
